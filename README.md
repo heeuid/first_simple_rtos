@@ -29,7 +29,10 @@ first simple rtos with qemu vm (realview pb a8)
 first_simple_rtos/  
 ├── boot/  
 │   ├── Entry.S  
-│   └── Main.c  
+│   └── Main.c
+├── hal/
+│   ├── Regs.c  
+│   └── Uart.h
 ├── include/  
 │   ├── ARMv7AR.h  
 │   ├── MemoryMap.h  
