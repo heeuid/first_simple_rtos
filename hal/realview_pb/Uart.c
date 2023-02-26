@@ -22,7 +22,7 @@ void Hal_uart_init(void)
 
 void Hal_uart_put_char(uint32_t uart_id, uint8_t ch)
 {
-    PL011_t* uart = Uart[uart_id];
+    volatile PL011_t* uart = Uart[uart_id];
 //////
 
     while(uart->uartfr.bits.TXFF);
