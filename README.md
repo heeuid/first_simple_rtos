@@ -9,7 +9,7 @@ first simple rtos with qemu vm (realview pb a8)
   + vm: qemu-system-arm / realview-pb-a8
   + `sudo apt install qemu-system-arm`
 
-- Cross platform
+- Cross platform (toolchain)
   + toolchain: arm-none-eabi-
   + `sudo apt install gcc-arm-none-eabi`
   + gdb: gdb-multiarch
@@ -19,10 +19,10 @@ first simple rtos with qemu vm (realview pb a8)
 - `make`
 
 ## Debugging
-- `make debug`
-- `make gdb`
-  1. `target remote:1234`
-  2. `ile build/navilos.axf`
+1. `make debug`
+2. `make gdb`
+    1. `target remote:1234`
+    2. `file build/navilos.axf`
   
 ## Directory tree
 <pre>
