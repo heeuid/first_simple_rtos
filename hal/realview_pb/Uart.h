@@ -21,7 +21,6 @@ typedef union UARTRSR_t {   // 0x004
         uint32_t BE:1;      // 2
         uint32_t OE:1;      // 3
         uint32_t reserved:28;
-        uint32_t
     } bits;
 } UARTRSR_t;
 

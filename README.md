@@ -2,7 +2,7 @@
 first simple rtos with qemu vm (realview pb a8)
 
 ## Environments
-- Development PC
+- Host OS
   + Ubuntu 22.04
 
 - Machine
@@ -23,21 +23,32 @@ first simple rtos with qemu vm (realview pb a8)
 2. `make gdb`
     1. `target remote:1234`
     2. `file build/navilos.axf`
+
+## Run
+- `make run`
+    + use `kill` to quit qemu in another terminal
   
 ## Directory tree
 <pre>
 first_simple_rtos/  
-├── boot/  
-│   ├── Entry.S  
+├── boot
+│   ├── Entry.S
 │   └── Main.c
-├── hal/
-│   ├── Regs.c  
-│   └── Uart.h
-├── include/  
-│   ├── ARMv7AR.h  
-│   ├── MemoryMap.h  
-│   └── stdint.h  
-├── Makefile  
-├── navilos.ld  
-└── README.md  
+├── docs
+│   ├── gdb.md
+│   └── images
+│       └── gdb_with_vim.png
+├── hal
+│   ├── HalUart.h
+│   └── realview_pb
+│       ├── Regs.c
+│       ├── Uart.c
+│       └── Uart.h
+├── include
+│   ├── ARMv7AR.h
+│   ├── MemoryMap.h
+│   └── stdint.h
+├── Makefile
+├── navilos.ld
+└── README.md
 </pre>
