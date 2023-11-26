@@ -14,18 +14,21 @@ LINKER_SCRIPT = ./navilos.ld
 MAP_FILE = build/navilos.map
 
 VPATH = boot \
-        hal/$(TARGET)
+        hal/$(TARGET) \
+	lib/
 
 ASM_SRCS = $(wildcard boot/*.S)
 ASM_OBJS = $(patsubst boot/%.S, build/%.os, $(ASM_SRCS))
 
 C_SRCS = $(notdir $(wildcard boot/*.c))
 C_SRCS += $(notdir $(wildcard hal/$(TARGET)/*.c))
+C_SRCS += $(notdir $(wildcard lib/*.c))
 C_OBJS = $(patsubst %.c, build/%.o, $(C_SRCS))
 
 INC_DIRS = -I include/
 INC_DIRS += -I hal/
 INC_DIRS += -I hal/$(TARGET)
+INC_DIRS += -I lib/
 
 CFLAGS = -c -g -std=c11
 
@@ -65,9 +68,9 @@ $(navilos): $(ASM_OBJS) $(C_OBJS) $(LINKER_SCRIPT)
 
 build/%.os: %.S
 	mkdir -p $(shell dirname $@)
-	$(CC) -march=$(ARCH) -mcpu=$(MCPU) $(INC_DIRS) $(CFLAGS) -o $@ $<	
+	$(CC) -mcpu=$(MCPU) $(INC_DIRS) $(CFLAGS) -o $@ $<	
 	#$(AS) -march=$(ARCH) -mcpu=$(MCPU) -g -o $@ $<	
 
 build/%.o: %.c
 	mkdir -p $(shell dirname $@)
-	$(CC) -march=$(ARCH) -mcpu=$(MCPU) $(INC_DIRS) $(CFLAGS) -o $@ $<
+	$(CC) -mcpu=$(MCPU) $(INC_DIRS) $(CFLAGS) -o $@ $<

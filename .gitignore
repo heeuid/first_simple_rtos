@@ -1,7 +1,10 @@
 build/
 build/*
+.cache/
+.cache/*
 tags
 *.swp
+compile_commands.json
 
 
 # Prerequisites

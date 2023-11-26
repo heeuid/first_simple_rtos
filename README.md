@@ -34,6 +34,7 @@ first_simple_rtos/
 ├── boot
 │   ├── Entry.S
 │   └── Main.c
+├── compile_commands.json
 ├── docs
 │   ├── gdb.md
 │   └── images
@@ -48,7 +49,17 @@ first_simple_rtos/
 │   ├── ARMv7AR.h
 │   ├── MemoryMap.h
 │   └── stdint.h
+├── lib
+│   ├── stdio.c
+│   └── stdio.h
 ├── Makefile
 ├── navilos.ld
 └── README.md
 </pre>
+
+## Documents
+- RealView Platform Baseboard for Cortex-A8 User Guide
+    + https://developer.arm.com/documentation/dui0417/d?lang=en
+- PrimeCell UART (PL011) Technical Reference Manual
+    + https://developer.arm.com/documentation/ddi0183/g?lang=en
+
