@@ -1,14 +1,14 @@
 # first_simple_rtos
-first simple rtos with qemu vm (realview pb a8)
+first simple rtos with qemu vm (realview pb a8)  
+Study Book: "도전! 임베디드 OS 만들기"  
+(https://github.com/navilera/Navilos)
 
 ## Environments
 - Host OS
   + Ubuntu 22.04
-
 - Machine
   + vm: qemu-system-arm / realview-pb-a8
   + `sudo apt install qemu-system-arm`
-
 - Cross platform (toolchain)
   + toolchain: arm-none-eabi-
   + `sudo apt install gcc-arm-none-eabi`
@@ -24,9 +24,9 @@ first simple rtos with qemu vm (realview pb a8)
     1. `target remote:1234`
     2. `file build/navilos.axf`
 
-## Run
+## Run & Quit
 - `make run`
-    + use `kill` to quit qemu in another terminal
+- `make kill` (in another terminal)
   
 ## Directory tree
 <pre>
@@ -34,7 +34,6 @@ first_simple_rtos/
 ├── boot
 │   ├── Entry.S
 │   └── Main.c
-├── compile_commands.json
 ├── docs
 │   ├── gdb.md
 │   └── images
@@ -48,6 +47,7 @@ first_simple_rtos/
 ├── include
 │   ├── ARMv7AR.h
 │   ├── MemoryMap.h
+│   ├── stdarg.h
 │   └── stdint.h
 ├── lib
 │   ├── stdio.c
@@ -62,4 +62,5 @@ first_simple_rtos/
     + https://developer.arm.com/documentation/dui0417/d?lang=en
 - PrimeCell UART (PL011) Technical Reference Manual
     + https://developer.arm.com/documentation/ddi0183/g?lang=en
-
+- GCC Link Options
+    + https://gcc.gnu.org/onlinedocs/gcc/Link-Options.html

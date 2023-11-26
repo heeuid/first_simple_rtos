@@ -7,7 +7,7 @@ TARGET = realview_pb
 CROSS_PLATFORM = arm-none-eabi-
 CC = $(CROSS_PLATFORM)gcc
 AS = $(CROSS_PLATFORM)as
-LD = $(CROSS_PLATFORM)ld
+LD = $(CROSS_PLATFORM)gcc
 OC = $(CROSS_PLATFORM)objcopy
 
 LINKER_SCRIPT = ./navilos.ld
@@ -30,7 +30,8 @@ INC_DIRS += -I hal/
 INC_DIRS += -I hal/$(TARGET)
 INC_DIRS += -I lib/
 
-CFLAGS = -c -g -std=c11
+CFLAGS = -c -g -std=c11 #-mthumb-interwork
+LDFLAGS = -nostdlib -lgcc#-nostartfiles -nodefaultlibs -static
 
 navilos = build/navilos.axf
 navilos_bin = build/navilos_bin
@@ -51,6 +52,9 @@ debug:
 gdb:
 	gdb-multiarch
 
+kill:
+	kill -9 `ps aux | grep 'qemu' | awk 'NR==1{print $$2}'`    
+
 arch:
 	@echo MACH=$(MACH)
 	@echo ARCH=$(ARCH)
@@ -63,7 +67,7 @@ srcs:
 	@echo "c_objs: $(C_OBJS)"
 
 $(navilos): $(ASM_OBJS) $(C_OBJS) $(LINKER_SCRIPT)
-	$(LD) -n -T $(LINKER_SCRIPT) -nostdlib -o $(navilos) $(ASM_OBJS) $(C_OBJS) -Map=$(MAP_FILE)
+	$(LD) -n -T $(LINKER_SCRIPT) -o $(navilos) $(ASM_OBJS) $(C_OBJS) -Wl,-Map=$(MAP_FILE) $(LDFLAGS)
 	$(OC) -O binary $(navilos) $(navilos_bin)
 
 build/%.os: %.S
