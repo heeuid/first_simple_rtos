@@ -1,21 +1,21 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <stdint.h>
-#include <HalUart.h>
+#include <hal_uart.h>
 
 #define PRINT_BUF_LEN 4096 // 4KB
 
-uint32_t putstr(const char *s)
+u32 putstr(const char *s)
 {
-    uint32_t size = 0;
+    u32 size = 0;
     while (!!*s) {
-        Hal_uart_put_char(0, *s++);
+        hal_uart_put_char(0, *s++);
         size++;
     }
     return size;
 }
 
-uint32_t debug_printf(const char *format, ...)
+u32 debug_printf(const char *format, ...)
 {
     char buf[PRINT_BUF_LEN];
     va_list(args);
@@ -28,13 +28,13 @@ uint32_t debug_printf(const char *format, ...)
 }
 
 // for %c %s %x(==%X) %u
-uint32_t vsprintf(char *buf, const char *format, va_list args)
+u32 vsprintf(char *buf, const char *format, va_list args)
 {
-    uint32_t size;
-    uint32_t i;
+    u32 size;
+    u32 i;
     char ch;
     char *str;
-    uint32_t num;
+    u32 num;
 
     for (i = 0, size = 0; !!format[i]; i++) {
         if (format[i] == '%') {
@@ -47,7 +47,7 @@ uint32_t vsprintf(char *buf, const char *format, va_list args)
 
             switch (format[i]) {
             case 'c':
-                ch = (char)va_arg(args, int32_t);
+                ch = (char)va_arg(args, i32);
                 buf[size++] = ch;
                 break;
             case 's':
@@ -59,11 +59,11 @@ uint32_t vsprintf(char *buf, const char *format, va_list args)
                 break;
             case 'X':
             case 'x':
-                num = (uint32_t)va_arg(args, uint32_t);
+                num = (u32)va_arg(args, u32);
                 size += utoa(&buf[size], num, utoa_hex);
                 break;
             case 'u':
-                num = (uint32_t)va_arg(args, uint32_t);
+                num = (u32)va_arg(args, u32);
                 size += utoa(&buf[size], num, utoa_dec);
                 break;
             }
@@ -76,11 +76,11 @@ uint32_t vsprintf(char *buf, const char *format, va_list args)
     return size;
 }
 
-uint32_t utoa(char *buf, uint32_t num, enum utoa_base base)
+u32 utoa(char *buf, u32 num, enum utoa_base base)
 {
     char numstr[10]; //32bits => about 4.3billion => 10 length
-    uint32_t len;
-    uint32_t r;
+    u32 len;
+    u32 r;
     char ch;
 
     len = 0;

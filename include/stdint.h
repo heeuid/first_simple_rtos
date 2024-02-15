@@ -19,8 +19,8 @@
  *	ISO C99: 7.18 Integer types <stdint.h>
  */
 
-#ifndef _STDINT_H
-#define _STDINT_H	1
+#ifndef __STDINT_H__
+#define __STDINT_H__
 
 /* Exact integral types.  */
 
@@ -303,4 +303,15 @@ typedef unsigned long long int	uintmax_t;
 #  define UINTMAX_C(c)	c ## ULL
 # endif
 
-#endif /* stdint.h */
+typedef int8_t		i8;
+typedef int16_t		i16;
+typedef int32_t		i32;
+typedef int64_t		i64;
+typedef long		isize;
+typedef uint8_t		u8;
+typedef uint16_t	u16;
+typedef uint32_t	u32;
+typedef uint64_t	u64;
+typedef unsigned long	usize;
+
+#endif /* __STDINT_H__ */

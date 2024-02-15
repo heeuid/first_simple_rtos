@@ -1,5 +1,5 @@
-#ifndef _STDARG_H_
-#define _STDARG_H_
+#ifndef __STDARG_H__
+#define __STDARG_H__
 
 typedef __builtin_va_list va_list;
 
@@ -7,5 +7,5 @@ typedef __builtin_va_list va_list;
 #define va_end(value)           __builtin_va_end(value);
 #define va_arg(value,type)      __builtin_va_arg(value,type);
 
-#endif /* _STDARG_H_ */
+#endif /* __STDARG_H__ */
 

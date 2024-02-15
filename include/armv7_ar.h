@@ -1,5 +1,5 @@
-#ifndef _ARMV7AR_H_
-#define _ARMV7AR_H_
+#ifndef __ARMV7AR_H__
+#define __ARMV7AR_H__
 
 /* operation mode bits */
 #define ARM_MODE_BIT_USR 0x10

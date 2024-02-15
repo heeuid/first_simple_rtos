@@ -8,9 +8,9 @@ enum utoa_base {
     utoa_hex=16,
 };
 
-uint32_t putstr(const char *s);
-uint32_t debug_printf(const char *format, ...);
-uint32_t vsprintf(char *buf, const char *format, va_list args);
-uint32_t utoa(char *buf, uint32_t num, enum utoa_base base);
+u32 putstr(const char *s);
+u32 debug_printf(const char *format, ...);
+u32 vsprintf(char *buf, const char *format, va_list args);
+u32 utoa(char *buf, u32 num, enum utoa_base base);
 
 #endif /* _LIB_STDIO_H_ */

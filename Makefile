@@ -30,8 +30,8 @@ INC_DIRS += -I hal/
 INC_DIRS += -I hal/$(TARGET)
 INC_DIRS += -I lib/
 
-CFLAGS = -c -g -std=c11 #-mthumb-interwork
-LDFLAGS = -nostdlib -lgcc#-nostartfiles -nodefaultlibs -static
+CFLAGS = -c -g -std=c11		#-mthumb-interwork
+LDFLAGS = -nostdlib -lgcc	#-nostartfiles -nodefaultlibs -static
 
 navilos = build/navilos.axf
 navilos_bin = build/navilos_bin

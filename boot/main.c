@@ -1,23 +1,23 @@
 #include <stdio.h>
 #include <stdint.h>
-#include <HalUart.h>
+#include <hal_uart.h>
 
-static void Hw_init(void);
+static void hw_init(void);
 static void printf_test(void);
 
 int main(void)
 {
-    uint32_t i;
-    uint32_t uart_id;
+    u32 i;
+    u32 uart_id;
 
-    Hw_init();
+    hw_init();
 
     uart_id = 0;
     i = 100;
     while (i--) {
-        Hal_uart_put_char(uart_id, 'N');
+        hal_uart_put_char(uart_id, 'N');
     }
-	Hal_uart_put_char(uart_id, '\n');
+	hal_uart_put_char(uart_id, '\n');
 
     putstr("Hello World!\n");
 
@@ -25,24 +25,24 @@ int main(void)
 
     i = 100;
     while (i--) {
-        uint8_t ch = Hal_uart_get_char(uart_id);
-        Hal_uart_put_char(uart_id, ch);
+        u8 ch = hal_uart_get_char(uart_id);
+        hal_uart_put_char(uart_id, ch);
     }
 
     return 0;
 }
 
 
-static void Hw_init(void) 
+static void hw_init(void) 
 {
-    Hal_uart_init();
+    hal_uart_init();
 }
 
 static void printf_test(void)
 {
 	char *str = "printf pointer test";
 	char *nullptr = 0;
-	uint32_t i = 5;
+	u32 i = 5;
 
 	debug_printf("[%s]\n", "Hello printf");
 	debug_printf("output string jpointer: [%s]\n", str);
