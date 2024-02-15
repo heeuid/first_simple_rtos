@@ -2,7 +2,7 @@
 #define __HAL_RVPB_UART_H__
 #include <stdint.h>
 
-union uartdr {    // 0x000
+union uart_dr {    // 0x000
     u32 all;
     struct {
         u32 data:8;    // 7:0
@@ -14,7 +14,7 @@ union uartdr {    // 0x000
     } bits;
 };
 
-union uartrsr {   // 0x004
+union uart_rsr {   // 0x004
     u32 all;
     struct {
         u32 fe:1;      // 0
@@ -25,7 +25,7 @@ union uartrsr {   // 0x004
     } bits;
 };
 
-union uartecr {   // 0x004
+union uart_ecr {   // 0x004
     u32 all;
     struct {
         u32 fe:1;      // 0
@@ -36,7 +36,7 @@ union uartecr {   // 0x004
     } bits;
 };
 
-union uartfr {    // 0x018
+union uart_fr {    // 0x018
     u32 all;
     struct {
         u32 cts:1;     // 0
@@ -52,7 +52,7 @@ union uartfr {    // 0x018
     } bits;
 };
 
-union uartilpr {  // 0x020
+union uart_ilpr {  // 0x020
     u32 all;
     struct {
         u32 ilpdvsr:8; // 7:0
@@ -60,7 +60,7 @@ union uartilpr {  // 0x020
     } bits;
 };
 
-union uartibrd {  // 0x024
+union uart_ibrd {  // 0x024
     u32 all;
     struct {
         u32 baud_divint:16;    // 15:0
@@ -68,7 +68,7 @@ union uartibrd {  // 0x024
     } bits;
 };
 
-union uartfbrd {  // 0x028
+union uart_fbrd {  // 0x028
     u32 all;
     struct {
         u32 baud_divfrac:6;    // 5:0
@@ -76,7 +76,7 @@ union uartfbrd {  // 0x028
     } bits;
 };
 
-union uartlcr_h { // 0x02C
+union uart_lcr_h { // 0x02C
     u32 all;
     struct {
         u32 brk:1;     // 0
@@ -90,10 +90,10 @@ union uartlcr_h { // 0x02C
     } bits;
 };
 
-union uartcr {    // 0x030
+union uart_cr {    // 0x030
     u32 all;
     struct {
-        u32 uarten:1;      // 0
+        u32 en:1;      // 0
         u32 siren:1;       // 1
         u32 sirlp:1;       // 2
         u32 reserved1:4;   // 6:3
@@ -110,7 +110,7 @@ union uartcr {    // 0x030
     } bits;
 };
 
-union uartifls {  // 0x034
+union uart_ifls {  // 0x034
     u32 all;
     struct {
         u32 txiflsel:3;    // 2:0
@@ -119,7 +119,7 @@ union uartifls {  // 0x034
     } bits;
 };
 
-union uartimsc {  // 0x038
+union uart_imsc {  // 0x038
     u32 all;
     struct {
         u32 rimim:1;   // 0
@@ -137,7 +137,7 @@ union uartimsc {  // 0x038
     } bits;
 };
 
-union uartris {   // 0x03c
+union uart_ris {   // 0x03c
     u32 all;
     struct {
         u32 rirmis:1;  // 0
@@ -155,7 +155,7 @@ union uartris {   // 0x03c
     } bits;
 };
 
-union uartmis {   // 0x040
+union uart_mis {   // 0x040
     u32 all;
     struct {
         u32 rimmis:1;  // 0
@@ -173,7 +173,7 @@ union uartmis {   // 0x040
     } bits;
 };
 
-union uarticr {   // 0x044
+union uart_icr {   // 0x044
     u32 all;
     struct {
         u32 rimic:1;   // 0
@@ -191,7 +191,7 @@ union uarticr {   // 0x044
     } bits;
 };
 
-union uartdmacr { // 0x048
+union uart_dmacr { // 0x048
     u32 all;
     struct {
         u32 rxdmae:1;      // 0
@@ -203,22 +203,22 @@ union uartdmacr { // 0x048
 
 // register map of an uart
 struct pl011 {
-    union uartdr uartdr;        // 0x000
-    union uartrsr uartrsr;      // 0x004
+    union uart_dr dr;        // 0x000
+    union uart_rsr rsr;      // 0x004
     u32 reserved1[4];           // 0x008-0x014
-    union uartfr uartfr;        // 0x018
+    union uart_fr fr;        // 0x018
     u32 reserved2;              // 0x01c
-    union uartilpr uartlpr;     // 0x020
-    union uartibrd uartibrd;    // 0x024
-    union uartfbrd uartfbrd;    // 0x028
-    union uartlcr_h uartlcr_h;  // 0x02c
-    union uartcr uartcr;        // 0x030
-    union uartifls uartfls;     // 0x034
-    union uartimsc uartimsc;    // 0x038
-    union uartris uartris;      // 0x03c
-    union uartmis uartmis;      // 0x040
-    union uarticr uarticr;      // 0x044
-    union uartdmacr uartdmacr;  // 0x048
+    union uart_ilpr lpr;     // 0x020
+    union uart_ibrd ibrd;    // 0x024
+    union uart_fbrd fbrd;    // 0x028
+    union uart_lcr_h lcr_h;  // 0x02c
+    union uart_cr cr;        // 0x030
+    union uart_ifls fls;     // 0x034
+    union uart_imsc imsc;    // 0x038
+    union uart_ris ris;      // 0x03c
+    union uart_mis mis;      // 0x040
+    union uart_icr icr;      // 0x044
+    union uart_dmacr dmacr;  // 0x048
 };
 
 #define UART_SIZE           0x1000
