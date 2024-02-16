@@ -4,18 +4,20 @@
 
 #define UART_CNT 4
 
-extern volatile struct pl011* uarts[];
+extern struct pl011* uarts[];
 
 void hal_uart_init(void)
 {
     int i;
+    volatile struct pl011* uart;
 
     // enable uarts
     for (i = 0; i < UART_CNT; i++) {
-        uarts[i]->cr.bits.en = 0;
-        uarts[i]->cr.bits.txe = 1;
-        uarts[i]->cr.bits.rxe = 1;
-        uarts[i]->cr.bits.en = 1;
+        uart = uarts[i];
+        uart->cr.bits.en = 0;
+        uart->cr.bits.txe = 1;
+        uart->cr.bits.rxe = 1;
+        uart->cr.bits.en = 1;
     }
 }
 
