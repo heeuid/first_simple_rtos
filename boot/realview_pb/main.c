@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <hal/uart.h>
+#include <hal/interrupt.h>
 
 static void hw_init(void);
 static void printf_test(void);
@@ -17,17 +18,12 @@ int main(void)
     while (i--) {
         hal_uart_put_char(uart_id, 'N');
     }
-	hal_uart_put_char(uart_id, '\n');
-
-    putstr("Hello World!\n");
+    hal_uart_put_char(uart_id, '\n');
 
     printf_test();
 
-    i = 100;
-    while (i--) {
-        u8 ch = hal_uart_get_char(uart_id);
-        hal_uart_put_char(uart_id, ch);
-    }
+    while (true)
+        ;
 
     return 0;
 }
@@ -35,6 +31,7 @@ int main(void)
 
 static void hw_init(void) 
 {
+    hal_interrupt_init();
     hal_uart_init();
 }
 

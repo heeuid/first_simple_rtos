@@ -1,5 +1,6 @@
 #ifndef __HAL_HAL_UART_H__
 #define __HAL_HAL_UART_H__
+
 #include <stdint.h>
 
 void hal_uart_init(void);

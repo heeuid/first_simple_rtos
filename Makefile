@@ -13,14 +13,16 @@ OC = $(CROSS_PLATFORM)objcopy
 LINKER_SCRIPT = ./navilos.ld
 MAP_FILE = build/navilos.map
 
-VPATH = boot/$(TARGET) \
+VPATH = boot/ \
+		boot/$(TARGET) \
         hal/$(TARGET) \
-	lib/
+		lib/
 
-ASM_SRCS = $(notdir $(wildcard boot/$(TARGET)/*.S))
+ASM_SRCS += $(notdir $(wildcard boot/$(TARGET)/*.S))
 ASM_OBJS = $(patsubst %.S, build/%.os, $(ASM_SRCS))
 
-C_SRCS = $(notdir $(wildcard boot/$(TARGET)/*.c))
+C_SRCS = $(notdir $(wildcard boot/*.c))
+C_SRCS += $(notdir $(wildcard boot/$(TARGET)/*.c))
 C_SRCS += $(notdir $(wildcard hal/$(TARGET)/*.c))
 C_SRCS += $(notdir $(wildcard lib/*.c))
 C_OBJS = $(patsubst %.c, build/%.o, $(C_SRCS))

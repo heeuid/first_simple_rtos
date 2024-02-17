@@ -22,6 +22,8 @@
 #ifndef __STDINT_H__
 #define __STDINT_H__
 
+#include <stdbool.h>
+
 /* Exact integral types.  */
 
 /* Signed.  */
@@ -313,5 +315,7 @@ typedef uint16_t	u16;
 typedef uint32_t	u32;
 typedef uint64_t	u64;
 typedef unsigned long	usize;
+
+#define NULL 0
 
 #endif /* __STDINT_H__ */

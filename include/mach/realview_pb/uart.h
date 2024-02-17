@@ -1,5 +1,5 @@
-#ifndef __HAL_RVPB_UART_H__
-#define __HAL_RVPB_UART_H__
+#ifndef __RVPB_UART_H__
+#define __RVPB_UART_H__
 #include <stdint.h>
 
 union uart_dr {    // 0x000
@@ -231,4 +231,11 @@ struct pl011 {
 #define UART_INTERRUPT2     46
 #define UART_INTERRUPT3     47
 
-#endif /* __HAL_RVPB_UART_H__ */
+#define UART_CNT 4
+
+#define get_uart(id) ((volatile struct pl011*)__uarts[id])
+
+extern struct pl011* __uarts[];
+
+
+#endif /* __RVPB_UART_H__ */

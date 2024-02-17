@@ -1,5 +1,5 @@
-#ifndef __MEMORYMAP_H__
-#define __MEMORYMAP_H__
+#ifndef __RVPB_MEMORYMAP_H__
+#define __RVPB_MEMORYMAP_H__
 
 /* STACK ADDRESSES */
 #define INST_ADDR_START     0

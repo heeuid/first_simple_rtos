@@ -5,6 +5,8 @@
 
 #define PRINT_BUF_LEN 4096 // 4KB
 
+static char __printf_buf[PRINT_BUF_LEN];
+
 u32 putstr(const char *s)
 {
     u32 size = 0;
@@ -17,14 +19,12 @@ u32 putstr(const char *s)
 
 u32 debug_printf(const char *format, ...)
 {
-    char buf[PRINT_BUF_LEN];
-    va_list(args);
-
+    va_list args;
     va_start(args, format);
-    vsprintf(buf, format, args);
+    vsprintf(__printf_buf, format, args);
     va_end(args);
 
-    return putstr(buf);
+    return putstr(__printf_buf);
 }
 
 // for %c %s %x(==%X) %u
@@ -40,11 +40,6 @@ u32 vsprintf(char *buf, const char *format, va_list args)
         if (format[i] == '%') {
             i++;
 
-            if (i >= PRINT_BUF_LEN) {
-                buf[0] = '\0';
-                return 0;
-            }
-
             switch (format[i]) {
             case 'c':
                 ch = (char)va_arg(args, i32);
@@ -53,7 +48,7 @@ u32 vsprintf(char *buf, const char *format, va_list args)
             case 's':
                 str = (char*)va_arg(args, char*);
                 if (!str)
-                    str = "";
+                    str = "(null)";
                 while (!!*str)
                     buf[size++] = *str++;
                 break;
@@ -70,6 +65,10 @@ u32 vsprintf(char *buf, const char *format, va_list args)
         }
         else
             buf[size++] = format[i];
+    }
+
+    if (size >= PRINT_BUF_LEN) {
+        size = 0;
     }
 
     buf[size] = '\0';
