@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdint.h>
-#include <hal_uart.h>
+#include <hal/uart.h>
 
 static void hw_init(void);
 static void printf_test(void);

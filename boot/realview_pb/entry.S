@@ -1,5 +1,5 @@
 #include <armv7_ar.h>
-#include <memory_map.h>
+#include <realview_pb/memory_map.h>
 
 .text
     .code 32                // 32-bit cmd

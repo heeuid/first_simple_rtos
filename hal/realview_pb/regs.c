@@ -1,5 +1,4 @@
-#include <stdint.h>
-#include <uart.h>
+#include <realview_pb/uart.h>
 
 struct pl011* uarts[] = {
     [0] = (struct pl011*)UART_BASE_ADDRESS0,
@@ -7,3 +6,4 @@ struct pl011* uarts[] = {
     [2] = (struct pl011*)UART_BASE_ADDRESS2,
     [3] = (struct pl011*)UART_BASE_ADDRESS3,
 };
+

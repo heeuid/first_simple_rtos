@@ -1,6 +1,6 @@
 #include <stdint.h>
-#include <uart.h>
-#include <hal_uart.h>
+#include <realview_pb/uart.h>
+#include <hal/uart.h>
 
 #define UART_CNT 4
 

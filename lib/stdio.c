@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <stdint.h>
-#include <hal_uart.h>
+#include <hal/uart.h>
 
 #define PRINT_BUF_LEN 4096 // 4KB
 
