@@ -3,6 +3,10 @@ first simple rtos with qemu vm (realview pb a8)
 Study Book: "도전! 임베디드 OS 만들기"  
 (https://github.com/navilera/Navilos)
 
+1. booting, exception vector table, reset handler, linker, Makefile, ...
+2. uart, console, printf
+3. interrupt, gic, uart interrupt
+
 ## Environments
 - Host OS
   + Ubuntu 22.04
@@ -32,30 +36,43 @@ Study Book: "도전! 임베디드 OS 만들기"
 <pre>
 first_simple_rtos/  
 ├── boot
-│   ├── Entry.S
-│   └── Main.c
+│   ├── handler.c
+│   └── realview_pb
+│       ├── entry.S
+│       └── main.c
 ├── docs
 │   ├── gdb.md
 │   └── images
 │       └── gdb_with_vim.png
 ├── hal
-│   ├── HalUart.h
 │   └── realview_pb
-│       ├── Regs.c
-│       ├── Uart.c
-│       └── Uart.h
+│       ├── interrupt.c
+│       ├── regs.c
+│       └── uart.c
 ├── include
-│   ├── ARMv7AR.h
-│   ├── MemoryMap.h
+│   ├── armcpu.h
+│   ├── armv7_ar.h
+│   ├── hal
+│   │   ├── interrupt.h
+│   │   └── uart.h
+│   ├── mach
+│   │   └── realview_pb
+│   │       ├── interrupt.h
+│   │       ├── memory_map.h
+│   │       └── uart.h
+│   ├── mmio.h
 │   ├── stdarg.h
-│   └── stdint.h
-├── lib
-│   ├── stdio.c
+│   ├── stdint.h
 │   └── stdio.h
+├── lib
+│   ├── armcpu.c
+│   └── stdio.c
 ├── Makefile
 ├── navilos.ld
 └── README.md
 </pre>
+
+- All header files are under include/
 
 ## Documents
 - RealView Platform Baseboard for Cortex-A8 User Guide
