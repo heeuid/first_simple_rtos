@@ -6,6 +6,7 @@ Study Book: "도전! 임베디드 OS 만들기"
 1. booting, exception vector table, reset handler, linker, Makefile, ...
 2. uart, console, printf
 3. interrupt, gic, uart interrupt
+4. timer, delay
 
 ## Environments
 - Host OS
@@ -48,25 +49,31 @@ first_simple_rtos/
 │   └── realview_pb
 │       ├── interrupt.c
 │       ├── regs.c
+│       ├── timer.c
 │       └── uart.c
 ├── include
 │   ├── armcpu.h
 │   ├── armv7_ar.h
 │   ├── hal
 │   │   ├── interrupt.h
+│   │   ├── timer.h
 │   │   └── uart.h
 │   ├── mach
 │   │   └── realview_pb
 │   │       ├── interrupt.h
 │   │       ├── memory_map.h
+│   │       ├── sysctrl.h
+│   │       ├── timer.h
 │   │       └── uart.h
 │   ├── mmio.h
 │   ├── stdarg.h
 │   ├── stdint.h
-│   └── stdio.h
+│   ├── stdio.h
+│   └── stdlib.h
 ├── lib
 │   ├── armcpu.c
-│   └── stdio.c
+│   ├── stdio.c
+│   └── stdlib.c
 ├── Makefile
 ├── navilos.ld
 └── README.md
@@ -80,5 +87,7 @@ first_simple_rtos/
         + [Programmer's Reference](https://developer.arm.com/documentation/dui0417/d/programmer-s-reference?lang=en)
 - PrimeCell UART (PL011) Technical Reference Manual
     + https://developer.arm.com/documentation/ddi0183/g?lang=en
+- ARM Dual-Timer Module (SP804) Technical Reference Manual
+    + https://developer.arm.com/documentation/ddi0271/d
 - GCC Link Options
     + https://gcc.gnu.org/onlinedocs/gcc/Link-Options.html

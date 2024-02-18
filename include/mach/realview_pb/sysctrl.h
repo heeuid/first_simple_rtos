@@ -1,0 +1,9 @@
+#ifndef __RVPB_SYSCTLR_H__
+#define __RVPB_SYSCTLR_H__
+
+#define SYSCTRL_BASE 0x10001000
+#define SYSCTRL_TIMER_CLK_SELECT 15
+#define SYSCTRL_TIMER_EN_OUT_SELECT 16
+
+#endif /* __RVPB_SYSCTLR_H__ */
+

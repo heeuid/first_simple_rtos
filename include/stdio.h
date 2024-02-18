@@ -1,5 +1,5 @@
-#ifndef _LIB_STDIO_H_
-#define _LIB_STDIO_H_
+#ifndef __STDIO_H__
+#define __STDIO_H__
 #include <stdint.h>
 #include <stdarg.h>
 
@@ -13,4 +13,5 @@ u32 debug_printf(const char *format, ...);
 u32 vsprintf(char *buf, const char *format, va_list args);
 u32 utoa(char *buf, u32 num, enum utoa_base base);
 
-#endif /* _LIB_STDIO_H_ */
+#endif /* __STDIO_H__ */
+

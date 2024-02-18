@@ -15,7 +15,7 @@ MAP_FILE = build/navilos.map
 
 VPATH = boot/ \
 		boot/$(TARGET) \
-        hal/$(TARGET) \
+		hal/$(TARGET) \
 		lib/
 
 ASM_SRCS += $(notdir $(wildcard boot/$(TARGET)/*.S))

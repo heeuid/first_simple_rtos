@@ -1,8 +1,8 @@
 #ifndef __MMIO_H__
 #define __MMIO_H__
 
-#define write32(val, addr) ({ DMB; (*(volatile u32 *)(addr)=(val)); val; })
-#define read32(addr) ({ u32 __v = (*(volatile u32 *)(addr)); DMB; __v; })
+#define write32(val, addr) ({ (*(volatile u32 *)(addr)=(val)); val; })
+#define read32(addr) ({ u32 __v = (*(volatile u32 *)(addr)); __v; })
 
 #define BIT(nr) (1<<(nr)) 
 #define MASK(bit_cnt) ((1ULL<<(bit_cnt))-1)
