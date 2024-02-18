@@ -75,11 +75,10 @@ first_simple_rtos/
 - All header files are under include/
 
 ## Documents
-- RealView Platform Baseboard for Cortex-A8 User Guide
-    + https://developer.arm.com/documentation/dui0417/d?lang=en
+- RealView Platform Baseboard for Cortex-A8
+    + [User Guide](https://developer.arm.com/documentation/dui0417/d?lang=en)
+        + [Programmer's Reference](https://developer.arm.com/documentation/dui0417/d/programmer-s-reference?lang=en)
 - PrimeCell UART (PL011) Technical Reference Manual
     + https://developer.arm.com/documentation/ddi0183/g?lang=en
-- GIC(Generic Interrupt Controller)
-    + https://developer.arm.com/documentation/dui0417/d/programmer-s-reference/generic-interrupt-controller--gic?lang=en
 - GCC Link Options
     + https://gcc.gnu.org/onlinedocs/gcc/Link-Options.html
